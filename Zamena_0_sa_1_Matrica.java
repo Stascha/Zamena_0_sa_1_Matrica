@@ -66,23 +66,28 @@ public class Convert_Matrix
         
         int[][] b = new int[a.length][a[0].length];
         
-	      int counter = 1;
+	      int counter_0 = 1;
+	      int counter_1 = 0;
 	      int number = 0;
 	    
 	      for (int i = 0; i < a.length; i++)
 	   	    for (int j = 0; j < a[i].length; j++) 
 	       	  b[i][j] = a[i][j];
 	    
-	      while( counter > 0 )
+	      while( counter_0 > 0 )
 	      {
-	        counter = 0;
+	        counter_0 = 0;
+	        
 
 	        for (int i = 0; i < a.length; i++)
 	        {
 		        for (int j = 0; j < a[i].length; j++) 
 	    	    {
 	    	        if(a[i][j] == 0)
-	    	            counter += 1;
+	    	            counter_0 += 1;
+	    	            
+	    	        if(a[i][j] == 1)
+	    	            counter_1 += 1;
 	    	        
 	    	         if( a[i][j] == 1 && i < (a.length - 1))
 	    	            b[i+1][j] = 1;
@@ -97,15 +102,18 @@ public class Convert_Matrix
 	    	         if( a[i][j] == 1 && j > 0)      
 	    	            b[i][j-1] = 1;
    	          
-	    	     }
+	    	    }
 	    	    
-	    	   }     
-	
+	    	} 
+	    	
+	       // U slučaju da se matrica sastoji od 0 funkcija vraća 99
+	        if(counter_1 == 0)
+	          return 99;
 
-          if(counter > 0)
+            if(counter_0 > 0)
 	          number = number + 1;
 	       
-	        if(counter == 0)
+	        if(counter_0 == 0)
 	          break;
 	            
 	        for (int i = 0; i < a.length; i++)
@@ -150,4 +158,3 @@ public class Convert_Matrix
     }		
 
 }
-     
